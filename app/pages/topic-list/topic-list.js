@@ -50,7 +50,7 @@ export class TopicListPage {
     window.open(`https://twitter.com/${speaker.twitter}`);
   }
 
- onSlideChangeStart(slider) {
+  onSlideChangeStart(slider) {
     this.showSkip = !slider.isEnd;
   }
 
