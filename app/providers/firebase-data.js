@@ -14,13 +14,17 @@ export class FirebaseData {
     
     constructor(http, userData) {
         // inject the Http provider and set to this instance
-        debugger;
         this.http = http;
         this.userData = userData;
         this.firebaseRef = new Firebase("https://hakkaton.firebaseio.com/geofire");
         this.geoFire = new GeoFire(this.firebaseRef);
         this.geoQuery = this.geoFire.query( { center: [0,0], radius: 100 } );
         this.center;
+        /*let options = { timeout: 10000, enableHighAccuracy: false };
+        navigator.geolocation.getCurrentPosition(position => {
+          this.center = [ position.coords.latitude, position.coords.longitude ];
+          this.geoQuery.updateCriteria( { center: this.center } );
+        }, null, options);*/
     }
     
     getGeoRef() {
@@ -43,8 +47,11 @@ export class FirebaseData {
     }
 
     createTopic() {
-      debugger;
-        this.geoFire.set("topic" + Math.floor(Math.random()*100), this.center);
+
+
+        this.geoFire.push("topic" + Math.floor(Math.random()*100), this.center);
+
+
     }
     
     destroyRoom(key) {

@@ -1,0 +1,26 @@
+<ion-navbar *navbar>
+  <!--<button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>-->
+  <ion-title>Create Topic</ion-title>
+</ion-navbar>
+
+<ion-content class="outer-content">
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input #topicName type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Descripion</ion-label>
+      <ion-input #topicDesc type="text"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button block (click)="createTopic(topicName.value, topicDesc.value); topicName.value=''; topicDesc.value=''">Create Topic</button>
+  </div>
+</ion-content>

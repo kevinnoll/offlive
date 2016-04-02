@@ -4,7 +4,7 @@
   </button>-->
   <ion-title>Topics</ion-title>
   <ion-buttons end>
-    <button createTopic (click)="createTopic()">
+    <button createTopic (click)="openCreateTopicPage()">
         <ion-icon name="add"></ion-icon>
     </button>
   </ion-buttons>
@@ -16,6 +16,10 @@
       <img [src]="slide.image" class="slide-image"/>
       <h2 class="slide-title" [innerHTML]="slide.title"></h2>
       <p [innerHTML]="slide.description"></p>
+      <p [innerHTML]="slide.topicName"></p>
+      <p [innerHTML]="slide.topicDesc"></p>
+      <p [innerHTML]="slide.topicUser"></p>
+      <p [innerHTML]="slide.distanceInMeters"></p>
     </ion-slide>
     <!--<ion-slide>
       <ion-toolbar>
