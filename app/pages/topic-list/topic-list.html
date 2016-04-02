@@ -1,18 +1,18 @@
 <ion-navbar *navbar>
-  <button menuToggle>
+  <!--<button menuToggle>
     <ion-icon name="menu"></ion-icon>
-  </button>
+  </button>-->
   <ion-title>Topics</ion-title>
 </ion-navbar>
 
-<ion-content class="outer-content speaker-list">
+<ion-content class="outer-content topic-list">
   <ion-slides pager (slideChangeStart)="onSlideChangeStart($event)">
     <ion-slide *ngFor="#slide of slides">
       <img [src]="slide.image" class="slide-image"/>
       <h2 class="slide-title" [innerHTML]="slide.title"></h2>
       <p [innerHTML]="slide.description"></p>
     </ion-slide>
-    <ion-slide>
+    <!--<ion-slide>
       <ion-toolbar>
       </ion-toolbar>
       <img src="img/ica-slidebox-img-4.png" class="slide-image"/>
@@ -21,6 +21,6 @@
         Continue
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
-    </ion-slide>
+    </ion-slide>-->
   </ion-slides>
 </ion-content>
