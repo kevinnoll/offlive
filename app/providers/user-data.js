@@ -49,6 +49,9 @@ export class UserData {
     return this.uid;
   }
   
+  getImageURL() {
+    return this.imageURL;
+  }
   
   loginDone() {
     this.isLoggedIn = true; // Set authentification was sucesfull

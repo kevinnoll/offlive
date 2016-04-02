@@ -5,6 +5,7 @@ import {LoginModal} from '../login/login';
 import {UserData} from '../../providers/user-data';
 import {FirebaseData} from '../../providers/firebase-data'; 
 import {TopicCreatePage} from '../topic-create/topic-create';
+import {TopicDetailPage} from '../topic-detail/topic-detail';
 
 @Page({
   templateUrl: 'build/pages/topic-list/topic-list.html'
@@ -31,6 +32,10 @@ export class TopicListPage {
         });
     } 
     this.getDataFromGeoFire();
+  }
+  
+  slideClicked(slide) {
+    this.nav.push(TopicDetailPage, slide);
   }
   
   getDataFromGeoFire() {

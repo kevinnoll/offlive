@@ -12,7 +12,7 @@
 
 <ion-content class="outer-content topic-list">
   <ion-slides pager (slideChangeStart)="onSlideChangeStart($event)">
-    <ion-slide *ngFor="#slide of slides">
+    <ion-slide *ngFor="#slide of slides" (click)="slideClicked(slide)">
       <!--<img [src]="slide.image" class="slide-image"/>-->
       <p [innerHTML]="slide.topicName"></p>
       <p [innerHTML]="slide.topicDesc"></p>

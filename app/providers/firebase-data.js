@@ -56,9 +56,9 @@ export class FirebaseData {
         sId = "topic"+id;
       data["uid"] = this.userData.getUID();
       data["username"] = this.userData.getUsername();
+      data["imageURL"] = this.userData.getImageURL();
       this.dataRef.child("topics/"+sId+"/data").set(data);
       this.geoFire.set(sId, this.center);
-      this.events.publish('topic:added');
     }
     
     destroyRoom(key) {
