@@ -17,6 +17,7 @@ export class FirebaseData {
         this.http = http;
         this.userData = userData;
         this.firebaseRef = new Firebase("https://hakkaton.firebaseio.com/geofire");
+        this.dataRef = new Firebase("https://hakkaton.firebaseio.com/");
         this.geoFire = new GeoFire(this.firebaseRef);
         this.geoQuery = this.geoFire.query( { center: [0,0], radius: 100 } );
         this.center;
@@ -34,6 +35,10 @@ export class FirebaseData {
     getCenterForMap() {
         return { lat: this.center[0], lng: this.center[1] };
     }
+    
+    getCenter() {
+      return this.center;
+    }
 
     getGeoQuery() {
         return new Promise(resolve => {
@@ -46,12 +51,13 @@ export class FirebaseData {
         });
     }
 
-    createTopic() {
-
-
-        this.geoFire.push("topic" + Math.floor(Math.random()*100), this.center);
-
-
+    createTopic(data) {
+      let id = Math.floor(Math.random()*100),
+        sId = "topic"+id;
+      data["uid"] = this.userData.getUID();
+      data["username"] = this.userData.getUsername();
+      this.dataRef.child("topics/"+sId+"/data").set(data);
+      this.geoFire.set(sId, this.center);
     }
     
     destroyRoom(key) {

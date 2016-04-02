@@ -72,7 +72,7 @@ export class TopicListPage {
   }
   
   openCreateTopicPage() {
-    this.nav.push(TopicCreatePage)
+    this.nav.push(TopicCreatePage);
   }
 
   goToSessionDetail(session) {

@@ -41,6 +41,15 @@ export class UserData {
       } 
   }
   
+  getUsername() {
+    return this.name;
+  }
+  
+  getUID() {
+    return this.uid;
+  }
+  
+  
   loginDone() {
     this.isLoggedIn = true; // Set authentification was sucesfull
     this.storage.set(this.HAS_LOGGED_IN, true);

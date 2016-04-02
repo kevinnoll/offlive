@@ -13,15 +13,12 @@ export class TopicCreatePage {
   constructor(nav, navParams, userData, firebaseData) {
     this.nav = nav;
     this.userData = userData;
-    this.firebaseData = firebaseData;
-    this.topic = this.navParams.data;
-    
-    
-    
+    this.firebaseData = firebaseData;    
   }
   
   createTopic (name, desc) {
-    
+    let data = {name,desc};
+    this.firebaseData.createTopic(data);
   }
   
   
