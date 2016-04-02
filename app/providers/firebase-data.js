@@ -58,6 +58,7 @@ export class FirebaseData {
       data["username"] = this.userData.getUsername();
       this.dataRef.child("topics/"+sId+"/data").set(data);
       this.geoFire.set(sId, this.center);
+      this.events.publish('topic:added');
     }
     
     destroyRoom(key) {

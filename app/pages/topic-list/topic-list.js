@@ -20,13 +20,7 @@ export class TopicListPage {
     this.ref = ref;
     this.userData = userData;
     this.firebaseData = firebaseData;
-    this.slides = [
-      {
-        title: "Siedeln bei <b>Marc</b>?",
-        description: "Suche nen Buddy zum Siedler von Catan spielen",
-        image: "img/ica-slidebox-img-1.png",
-      }
-    ];
+    this.slides = [];
     
     if(!this.userData.isLoggedIn) {
         let modal = Modal.create(LoginModal);
