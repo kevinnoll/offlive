@@ -2,17 +2,31 @@
   <!--<button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>-->
-  <ion-title>Create Topic</ion-title>
+  <ion-title>{{topic.topicName}}</ion-title>
 </ion-navbar>
 
-<ion-content class="outer-content">
+<ion-content class="topic-detail">
   <ion-card>
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/marty-avatar.png">
+        <img src="{{topic.topicUserImage}}">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <h2>{{topic.topicUser}}</h2>
+      <h4>{{topic.topicName}}</h4>
+      <p>{{topic.topicDesc}}</p>
     </ion-item>
   </ion-card>
+  
+  <ion-list no-lines>
+    <ion-item *ngFor="#message of chats" class="message" (click)="itemSelected(item)">
+      {{message.author}}: {{message.message}}
+    </ion-item>
+  </ion-list>
+
+  <ion-item class="textbox">
+      <ion-input type="text" #messagetext (keyup.enter)="sendMessage(messagetext.value); messagetext.value=''" placeholder="Write something to show em you're alpha"></ion-input>
+  </ion-item>
+  <button class="sendButton" large (click)="sendMessage(messagetext.value); messagetext.value=''">
+      <ion-icon name="send"></ion-icon>
+  </button>
 </ion-content>

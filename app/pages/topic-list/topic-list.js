@@ -51,9 +51,10 @@ export class TopicListPage {
       topicRoomRef.on("value", (snapshot) => {
         let topicName = snapshot.val().name,
             topicDesc = snapshot.val().desc,
-            topicUser = snapshot.val().username;
+            topicUser = snapshot.val().username,
+            topicUserImage = snapshot.val().imageURL;
         let distanceInMeters = Math.round(distance*1000);
-        this.slides.push({ name: key, lat: location[0], lon : location[1], distanceInMeters, topicName, topicDesc, topicUser});
+        this.slides.push({ name: key, lat: location[0], lon : location[1], distanceInMeters, topicName, topicDesc, topicUser, topicUserImage});
         this.slides.sort(function(a,b){
           return a.distanceInMeters - b.distanceInMeters;
         })

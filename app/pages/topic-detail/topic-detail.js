@@ -14,7 +14,23 @@ export class TopicDetailPage {
     this.nav = nav;
     this.userData = userData;
     this.firebaseData = firebaseData;
-    this.topic = navParams.topic;
+    this.topic = navParams.data;
+    this.messagesRef = new Firebase("https://hakkaton.firebaseio.com/topics/"+this.topic.name+"/chat");
+    this.chats = [];
+    this.messagesRef.on("child_added", snapshot => {
+        let room = snapshot.val();
+        this.chats.push(room);
+    }, errorObject => {
+        console.log("The firebase-read in conference-data.js failed: " + errorObject.code);
+    });
   }
+  
+  sendMessage(message) {
+      this.messagesRef.push({
+          author: this.topic.topicUser,
+          message: message
+      })
+  }
+  
   
 }
