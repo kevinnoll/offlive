@@ -18,13 +18,13 @@ export class TutorialPage {
 
     this.slides = [
       {
-        title: "Welcome to <b>ICA</b>",
-        description: "The <b>Ionic Conference App</b> is a practical preview of the Ionic Framework in action, and a demonstration of proper code use.",
+        title: "Siedeln mit <b>Marc</b>",
+        description: "sheeet harter stuff.",
         image: "img/ica-slidebox-img-1.png",
       },
       {
-        title: "What is Ionic?",
-        description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+        title: "SSIO hören",
+        description: "Alle meine Fans sind maskuline Jungs",
         image: "img/ica-slidebox-img-2.png",
       },
       {

@@ -13,10 +13,36 @@ export class UserData {
     this.storage = new Storage(LocalStorage);
     this.events = events;
     this.HAS_LOGGED_IN = 'hasLoggedIn';
+    
+    this.authRef = new Firebase("https://hakkaton.firebaseio.com");
+    this.authRef.onAuth((user) => this.welcomeUser(user));
   }
 
   hasFavorite(sessionName) {
     return (this._favorites.indexOf(sessionName) > -1);
+  }
+  
+  getAuthRef() {
+      return this.authRef;
+  }
+  
+  welcomeUser(user) {
+      if (user) {
+        if (user.provider === 'twitter') {
+          this.userIsLoggedInWithTwitter(user);  
+        } else if (user.provider === 'password') {
+          this.userIsLoggedInWithPassword(user);
+        } else if (user.provider === 'facebook') {
+          this.userIsLoggedInWithFacebook(user);
+        }
+
+        this.loginDone(); 
+        console.log("u are now logged in with " + user.provider + " , have phun!");
+      } 
+  }
+  
+  userIsLoggedInWithFacebook(user) {
+    debugger;
   }
 
   addFavorite(sessionName) {

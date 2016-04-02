@@ -2,11 +2,13 @@ import 'es6-shim';
 import {App, IonicApp, Events, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {ConferenceData} from './providers/conference-data';
+import {FirebaseData} from './providers/firebase-data';
 import {UserData} from './providers/user-data';
 import {TabsPage} from './pages/tabs/tabs';
 import {LoginPage} from './pages/login/login';
 import {SignupPage} from './pages/signup/signup';
 import {TutorialPage} from './pages/tutorial/tutorial';
+import {TopicListPage} from './pages/topic-list/topic-list';
 
 
 @App({
@@ -42,7 +44,7 @@ class ConferenceApp {
     confData.load();
 
     // We plan to add auth to only show the login page if not logged in
-    this.root = TabsPage;
+    this.root = TopicListPage;
 
     // create an list of pages that can be navigated to from the left menu
     // the left menu only works after login
@@ -59,8 +61,8 @@ class ConferenceApp {
     ];
 
     this.loggedOutPages = [
-      { title: 'Login', component: LoginPage, icon: 'log-in' },
-      { title: 'Signup', component: SignupPage, icon: 'person-add' }
+      //{ title: 'Login', component: LoginPage, icon: 'log-in' },
+      //{ title: 'Signup', component: SignupPage, icon: 'person-add' }
     ]
 
     // decide which menu items should be hidden by current login status stored in local storage
