@@ -41,10 +41,21 @@ export class UserData {
       } 
   }
   
-  userIsLoggedInWithFacebook(user) {
-    debugger;
+  loginDone() {
+    this.isLoggedIn = true; // Set authentification was sucesfull
+    this.storage.set(this.HAS_LOGGED_IN, true);
+    this.events.publish('user:login');
   }
+  
+  userIsLoggedInWithFacebook(user) {
+    this.authData = user; // Set retrieved Twitter profile data
 
+    this.provider = user.provider;
+    this.name = user.facebook.displayName;
+    this.uid = user.facebook.id;
+    this.imageURL = user.facebook.profileImageURL;
+  }
+  
   addFavorite(sessionName) {
     this._favorites.push(sessionName);
   }
@@ -77,4 +88,12 @@ export class UserData {
       return value;
     });
   }
+  
+  authWithFacebook() {
+    this.authRef.authWithOAuthPopup("facebook", (error) => {
+      if (error) {
+        console.log(error);
+      }
+    }/*, {remember: "sessionOnly"}*/);
+  } 
 }

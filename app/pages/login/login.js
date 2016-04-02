@@ -1,5 +1,4 @@
 import {IonicApp, Page, NavController, ViewController, Modal, Events} from 'ionic-angular';
-import {TabsPage} from '../tabs/tabs';
 import {SignupPage} from '../signup/signup';
 import {UserData} from '../../providers/user-data';
 
@@ -33,12 +32,12 @@ export class LoginModal {
 
     if (form.valid) {
       this.userData.login();
-      this.nav.push(TabsPage);
+      //this.nav.push(TabsPage);
     }
   }
 
   logonWithFacebook(form) {
-      //this.userData.authWithTwitter();
+      this.userData.authWithFacebook();
   }
   
   listenToLoginEvents() {

@@ -1,17 +1,20 @@
-import {NavController, Page, ActionSheet} from 'ionic-angular';
+import {NavController, Page, ActionSheet, Modal} from 'ionic-angular';
 import {ConferenceData} from '../../providers/conference-data';
+import {LoginModal} from '../login/login';
+import {UserData} from '../../providers/user-data';
 
 @Page({
   templateUrl: 'build/pages/topic-list/topic-list.html'
 })
 export class TopicListPage {
   static get parameters() {
-    return [[NavController], [ConferenceData]];
+    return [[NavController], [ConferenceData], [UserData]];
   }
 
-  constructor(nav, confData) {
+  constructor(nav, confData, userData) {
     this.nav = nav;
     this.confData = confData;
+    this.userData = userData;
     this.slides = [
       {
         title: "Siedeln bei <b>Marc</b>?",
@@ -29,10 +32,20 @@ export class TopicListPage {
         image: "img/ica-slidebox-img-3.png",
       }
     ];
+    
+    if(!this.userData.isLoggedIn) {
+        let modal = Modal.create(LoginModal);
+        
+        // without the setTimeout function, the modal wont work properly when closing with fresh cache.
+        setTimeout( () => {
+          this.nav.present(modal);
+        });
+    }
+
   }
 
   goToSessionDetail(session) {
-    this.nav.push(SessionDetailPage, session);
+    //this.nav.push(SessionDetailPage, session);
   }
 
   onSlideChangeStart(slider) {
