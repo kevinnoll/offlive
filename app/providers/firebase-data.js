@@ -14,6 +14,7 @@ export class FirebaseData {
     
     constructor(http, userData) {
         // inject the Http provider and set to this instance
+        debugger;
         this.http = http;
         this.userData = userData;
         this.firebaseRef = new Firebase("https://hakkaton.firebaseio.com/geofire");
@@ -41,8 +42,9 @@ export class FirebaseData {
         });
     }
 
-    createRoom() {
-        this.geoFire.set("newRoom" + Math.floor(Math.random()*100), this.center);
+    createTopic() {
+      debugger;
+        this.geoFire.set("topic" + Math.floor(Math.random()*100), this.center);
     }
     
     destroyRoom(key) {

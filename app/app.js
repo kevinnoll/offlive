@@ -11,7 +11,7 @@ import {TopicListPage} from './pages/topic-list/topic-list';
 
 @App({
   templateUrl: 'build/app.html',
-  providers: [ConferenceData, UserData],
+  providers: [ConferenceData, UserData, FirebaseData],
   config: {
     platforms: {
       android: {
@@ -23,13 +23,14 @@ import {TopicListPage} from './pages/topic-list/topic-list';
 class ConferenceApp {
   static get parameters() {
     return [
-      [IonicApp], [Events], [ConferenceData], [UserData], [Platform]
+      [IonicApp], [Events], [ConferenceData], [UserData], [Platform], [FirebaseData]
     ]
   }
 
-  constructor(app, events, confData, userData, platform) {
+  constructor(app, events, confData, userData, platform, firebaseData) {
     this.app = app;
     this.userData = userData;
+    this.firebaseData = firebaseData;
     this.events = events;
     this.loggedIn = false;
 

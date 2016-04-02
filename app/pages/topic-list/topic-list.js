@@ -2,19 +2,21 @@ import {NavController, Page, ActionSheet, Modal} from 'ionic-angular';
 import {ConferenceData} from '../../providers/conference-data';
 import {LoginModal} from '../login/login';
 import {UserData} from '../../providers/user-data';
+import {FirebaseData} from '../../providers/firebase-data'; 
 
 @Page({
   templateUrl: 'build/pages/topic-list/topic-list.html'
 })
 export class TopicListPage {
   static get parameters() {
-    return [[NavController], [ConferenceData], [UserData]];
+    return [[NavController], [ConferenceData], [UserData], [FirebaseData]];
   }
 
-  constructor(nav, confData, userData) {
+  constructor(nav, confData, userData, firebaseData) {
     this.nav = nav;
     this.confData = confData;
     this.userData = userData;
+    this.firebaseData = firebaseData;
     this.slides = [
       {
         title: "Siedeln bei <b>Marc</b>?",
@@ -41,7 +43,10 @@ export class TopicListPage {
           this.nav.present(modal);
         });
     }
-
+  }
+  
+  createTopic() {
+      this.firebaseData.createTopic();
   }
 
   goToSessionDetail(session) {
